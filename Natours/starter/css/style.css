@@ -6,3 +6,197 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/* Clear browser presets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles goes in body*/
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh; /*Element is 95% of viewport*/
+    /*linear gradient displays image that shows light green to dark green from right */
+    background-image: linear-gradient(
+            to right,
+            rgba(126, 213, 111, 0.8),#28b485),
+    url("../img/hero.jpg");
+    background-size: cover; /*Tries to fit image to the 95vh*/
+    background-position: top; /*Ensure Image top is not croped during resize*/
+    /* Each param to polygon is coordination on x and y axis.*/
+    clip-path: polygon(0 0,100% 0, 100% 75vh, 0 100%);
+    position: relative;
+    /* Making a triangle */
+    /*clip-path: polygon(0 100%, 50% 0, 100% 100%);*/
+}
+
+.logo-box {
+    position: absolute;
+    /*The 0px starts at the relative position of parent element (header) */
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* This ensures the reference for 50% starts from THIS element and not from the parent.*/
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    /*Fixes shaking in animation*/
+    backface-visibility: hidden;
+    margin-bottom: 60px;
+}
+
+.heading-primary-main {
+    /*Block element takes up whole width and adds line breaks before and after*/
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    /*Ties an animation to an element*/
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*animation-iteration-count: 3;*/
+    /*animation-delay: 3s;*/
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+
+    /*Combines animation name, duration and function*/
+    animation: moveInRight 1s ease-out;
+}
+
+/* For animation only use opacity and transform */
+@keyframes moveInLeft {
+    /*Animation start*/
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    /*Animation end*/
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    /*Animation start*/
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    /*Animation end*/
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+/*The :link is a psuedo class. They are used to style element based on a state (blur, hover, click etc.,)*/
+.btn:link, .btn:visited {
+    /*inline-block is treated as as text element*/
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 100px;
+    /*For simple animations, just use transition instead of @keyframes and animation*/
+    transition: all .2s;
+    position: relative;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    /*Adding shadow only for y-axis and 20px shadow*/
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+/* Adds another button BEHIND the original button. The .btn:hover::after makes this hidden element visible*/
+/* This is used extensively to animate an element*/
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.5) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInButton 0.5s ease-out .75s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInButton {
+    /*Animation start*/
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    /*Animation end*/
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
