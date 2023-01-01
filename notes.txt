@@ -1,0 +1,50 @@
+What happens wto CSS when we load webpage?:
+    Load HTML -> Parse HTML -> Browser builds DOM (Document Object Model)
+                            -> Load CSS -> Parse CSS (resolve CSS conflicts aka cascade, Process final CSS values % to px) -> CSSOM (CSS Object Model)
+
+    DOM and CSSOM form render tree -> visual formatting model -> Final website rendered
+
+CSS Parsing:
+    CSS rule - contains selector and styles.
+        eg., .my-selector {
+            color: red;
+        }
+
+    #1 The Cascade 'The **C** in CSS'
+        Process of combining different stylesheets and resolving conflicts when more than on rule applies to a certain element.
+        eg., conflicts between author (developer), user (end user), and user agent (browser) rules
+
+        Three steps to resolve conflicts:
+            Importance: !important, author, user and browser declarations (Highest to lowest importance)
+            Specificity: If all conflicts have equal importance then inline styles, IDs, classes/pseudo classes, Elements/pseudo elements (Highest to lowest importance)
+             specificity - (inline, IDs, classes, elements)
+             eg., .button {} -- specificity (0, 0, 1, 0)
+                  nav#nav div.pull-right .button {} -- (0, 1, 2, 2) -- Takes priority
+                  a{} -- (0, 0, 0, 1)
+                  #nav a.button:hover {} -- (0, 1, 2, 1)
+            Source Order: If importance and specificity are equal, the order of declaration is used.
+
+    #2 Value Processing
+        each property has initial value (eg., browser root font size is 16 px -- user agent)
+        All measurements %, rem, vh will all get converted to px.
+        The width, padding, font-size are calculated.
+        % fonts, em (fonts and lengths), rem are all based on computed parent or current element font size
+            em are measured relative to parent font size if used in font size
+            em are measured relative to current element font size if used in length
+        % length is based on computed parent width
+        vh and vw is 1% of the viewport width or height. Browser will know view port height/width.
+
+    # Inheritance
+        Each CSS property NEEDS a value. The values are figured out at runtime, even if they are not specified.
+        Inheritance passes the values for some specific props from parent to children
+        Happens only if values not specified  in child. But can use inherit keyword to force inheritance, and initial keyword to reset property to initial value.
+        To determine a value:
+            Is cascaded? --> NO --> Is value inherited?
+                                   (some values cannot be inherited. eg., font-size is inherited, but padding is not!. Props related to fonts are usually inherited)
+                                   (Inherited values are computed using parent values)
+
+
+            eg., .parent {                  .child {
+                font-size: 20px;                font-size: 25px;
+                line-height: 150%               line-height: 30%; (Inherited value is computed using parent values and NOT child values)
+            }                                }
