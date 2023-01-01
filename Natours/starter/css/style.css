@@ -8,20 +8,34 @@ Dark green: #28b485
 */
 
 /* Clear browser presets */
-* {
+*, *::after, *::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* Forces inheritance */
+    box-sizing: inherit;
+}
+
+/*
+    Specifying font size globally, and using rem for sizing elements ensure the size can be adjusted by just
+    changing the font size. This is because the rem is calculated based on parent font size.
+*/
+html {
+    /* For all child elements, 1 rem is 10px because rem equates to ROOT font size. */
+    /*Also bad practice to set font size in px. It prevents users from changing font size at browser level. */
+    font-size: 62.5%; /*Browser default is 16px and we want 10px. Hence 10/16 *100 = 62.5*/
 }
 
 /* Global styles goes in body*/
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /*font-size: 16px;*/
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    /*padding: 30px;*/
+    /* Since 1 rem is 10px, 30px is 30/10 = 3 rem*/
+    padding: 3rem;
+    box-sizing: border-box;
 }
 
 .header {
@@ -29,12 +43,12 @@ body {
     /*linear gradient displays image that shows light green to dark green from right */
     background-image: linear-gradient(
             to right,
-            rgba(126, 213, 111, 0.8),#28b485),
+            rgba(126, 213, 111, 0.8), #28b485),
     url("../img/hero.jpg");
     background-size: cover; /*Tries to fit image to the 95vh*/
     background-position: top; /*Ensure Image top is not croped during resize*/
     /* Each param to polygon is coordination on x and y axis.*/
-    clip-path: polygon(0 0,100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     position: relative;
     /* Making a triangle */
     /*clip-path: polygon(0 100%, 50% 0, 100% 100%);*/
@@ -43,12 +57,12 @@ body {
 .logo-box {
     position: absolute;
     /*The 0px starts at the relative position of parent element (header) */
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
-    height: 35px;
+    height: 3.5rem;
 }
 
 .text-box {
@@ -65,15 +79,15 @@ body {
     text-transform: uppercase;
     /*Fixes shaking in animation*/
     backface-visibility: hidden;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .heading-primary-main {
     /*Block element takes up whole width and adds line breaks before and after*/
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     /*Ties an animation to an element*/
     animation-name: moveInLeft;
@@ -85,9 +99,9 @@ body {
 
 .heading-primary-sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.74rem;
 
     /*Combines animation name, duration and function*/
     animation: moveInRight 1s ease-out;
@@ -98,11 +112,11 @@ body {
     /*Animation start*/
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% {
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
 
     /*Animation end*/
@@ -116,11 +130,11 @@ body {
     /*Animation start*/
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     /*Animation end*/
@@ -136,21 +150,23 @@ body {
     display: inline-block;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
-    border-radius: 100px;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
     /*For simple animations, just use transition instead of @keyframes and animation*/
     transition: all .2s;
     position: relative;
+    font-size: 1.6rem;
 }
 
 .btn:hover {
     transform: translateY(-3px);
     /*Adding shadow only for y-axis and 20px shadow*/
-    box-shadow: 0 10px 20px rgba(0,0,0,.2);}
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
 
 .btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
 .btn-white {
@@ -165,7 +181,7 @@ body {
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -191,7 +207,7 @@ body {
     /*Animation start*/
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     /*Animation end*/

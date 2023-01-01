@@ -31,6 +31,7 @@ CSS Parsing:
         % fonts, em (fonts and lengths), rem are all based on computed parent or current element font size
             em are measured relative to parent font size if used in font size
             em are measured relative to current element font size if used in length
+            rem is ALWAYS calculated using root font size. Great way to create response design.
         % length is based on computed parent width
         vh and vw is 1% of the viewport width or height. Browser will know view port height/width.
 
@@ -48,3 +49,65 @@ CSS Parsing:
                 font-size: 20px;                font-size: 25px;
                 line-height: 150%               line-height: 30%; (Inherited value is computed using parent values and NOT child values)
             }                                }
+
+Website rendering:
+    Algorithm that calculates boxes and determines layout of the page.
+         Dimension of the boxes
+         Box type
+         Positioning scheme
+         stacking context
+         other elements in render tree
+         View port size
+
+    Box model:
+        According to box model each element is displayed as a rectangle box. This box contains the content, element height & width, border, padding, and margin. Padding and margin are optional.
+        Content --> Padding --> Border --> Margin --> Fill area
+
+        Content - Text, images, and other content. And the height and weight declared.
+        Padding - Transparent area around the content inside the box
+        Border - Goes around the padding and the content
+        Margin - Space between boxes. This is OUTSIDE the box.
+        Fill area - Area that gets filled with background color or image. Fills only content, padding and border.
+
+        By default padding and border get added to determine the final box height and width.
+        Total width = right border + right padding + content width + left padding + left border
+        Total height = top border + top padding + content height + bottom padding + bottom border
+
+        Border box:
+        To ensure the specified content height and width includes padding, we can use border-box. If we specify content height/width, padding, AND border-box, the content area might get reduced.
+        Total width = content width
+        Total height = content height
+
+        Box types:
+            Can be specified in display attr.
+
+            Block-level boxes:
+                display: block or flex or list-item or table
+                Elements formatted visually as blocks
+                100% of parent width
+                Vertical one after another. ie., it adds line breaks after each element.
+
+            Inline boxes:
+                display: inline
+                Content is distributed in lines and occupies only content space.
+                No line-breaks
+                No height and width
+                padding and margins only horizontal (left and right)
+
+            Inline-block boxes
+                display: inline-block
+                Mix of block and inline
+                Content occupies only content space
+                No line breaks
+
+        Positioning schemes:
+            Can be specified in position attr
+
+            Normal flow:
+                position: relative
+                Default position schema
+                NOT floated or absolute positioned
+                Elements laid out according to source order
+
+            Floats:
+
