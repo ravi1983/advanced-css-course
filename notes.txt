@@ -143,3 +143,19 @@ CSS folder structure:
         1 main saas file to import all other files into a compiled CSS stylesheet
         The 7 folders are base, components, layout, pages, themes, abstracts, vendors
 
+Sass:
+    Extension of CSS. Vanilla CSS can complex to manage on large projects.
+    It's a CSS preprocessor that adds power and elegance to the basic CSS language
+    Sass source code --> via Sass compiler --> Compiled CSS code
+    Sass Syntax - Uses indentation and no semicolon. Diff to read.
+    SCSS syntax (Sassy CSS) - Uses curly braces and semicolon. Recommended.
+
+    Features:
+        Variables - Reusable values for colors, fonts etc.,
+        Nesting - Nest selectors inside of one another, allowing us to write less code
+        Operators - Maths ops inside CSS
+        Partials and imports - Write small/partial files and import them into one single file.
+        Mixins - Reusable pieces of CSS code
+        Functions - Similar to mixins, but they produce value that can be used.
+        Extends -  make diff selectors inherit declarations that are common for all of them
+        Control directives - Complex code using conditionals and loops. Mainly used for creating CSS frameworks.
