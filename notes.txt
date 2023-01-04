@@ -110,4 +110,36 @@ Website rendering:
                 Elements laid out according to source order
 
             Floats:
+                float: left or right
+                Element removed from normal flow
+                Text and inline elements will wrap around floated elements
+                Container will not adjust it's height to the element
+
+            Absolute:
+                position: absolute or fixed
+                Element removed from normal flow
+                No impact on surrounding content or elements
+                Use top, bottom, left and right to offset the element from it's relatively positioned container.
+
+        Stacking context:
+            Layers on top of each other is a stack. Layer on bottom are painted first and the ones on top overlap the bottom ones.
+            e.g., z-index
+
+CSS naming convention:
+    Use BEM (Block Element Modifier) pattern. Syntax is .block__element--modifier.
+        Block - Block of code that has meaning on it's own
+        Element - Element inside the block. It has no meaning on it's own
+        Modifier - Modifier on the element (eg., change back ground color, add shadow, add rounded corner etc.,)
+    Enables low specificity selectors
+
+    eg., <div class="root">
+        <div class="root__cook"></div>
+        <button class="root__cook--round"></button>
+    </div>
+
+CSS folder structure:
+    Use 7-1 pattern
+        7 different folders for partial sass files
+        1 main saas file to import all other files into a compiled CSS stylesheet
+        The 7 folders are base, components, layout, pages, themes, abstracts, vendors
 
