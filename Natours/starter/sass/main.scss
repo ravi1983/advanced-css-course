@@ -1,9 +1,17 @@
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-grey-dark : #777;
+$color-white: #fff;
+
 /* Clear browser presets */
 *, *::after, *::before {
   margin: 0;
   padding: 0;
   /* Forces inheritance */
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 /*
     Specifying font size globally, and using rem for sizing elements ensure the size can be adjusted by just
@@ -12,8 +20,8 @@
 html {
   /* For all child elements, 1 rem is 10px because rem equates to ROOT font size. */
   /*Also bad practice to set font size in px. It prevents users from changing font size at browser level. */
-  font-size: 62.5%;
-  /*Browser default is 16px and we want 10px. Hence 10/16 *100 = 62.5*/ }
+  font-size: 62.5%; /*Browser default is 16px and we want 10px. Hence 10/16 *100 = 62.5*/
+}
 
 /* Global styles goes in body*/
 body {
@@ -21,35 +29,40 @@ body {
   font-weight: 400;
   /*font-size: 16px;*/
   line-height: 1.7;
-  color: #777;
+  color: $color-grey-dark;
   /*padding: 30px;*/
   /* Since 1 rem is 10px, 30px is 30/10 = 3 rem*/
   padding: 3rem;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .header {
-  height: 95vh;
-  /*Element is 95% of viewport*/
+  height: 95vh; /*Element is 95% of viewport*/
   /*linear gradient displays image that shows light green to dark green from right */
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
-  background-size: cover;
-  /*Tries to fit image to the 95vh*/
-  background-position: top;
-  /*Ensure Image top is not croped during resize*/
+  background-image: linear-gradient(
+                  to right bottom,
+                  rgba($color-primary-light, 0.8),
+                  rgba($color-primary-dark, 0.8)),
+  url("../img/hero.jpg");
+  background-size: cover; /*Tries to fit image to the 95vh*/
+  background-position: top; /*Ensure Image top is not croped during resize*/
   /* Each param to polygon is coordination on x and y axis.*/
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative;
   /* Making a triangle */
-  /*clip-path: polygon(0 100%, 50% 0, 100% 100%);*/ }
+  /*clip-path: polygon(0 100%, 50% 0, 100% 100%);*/
+}
 
 .header__logo-box {
   position: absolute;
   /*The 0px starts at the relative position of parent element (header) */
   top: 4rem;
-  left: 4rem; }
+  left: 4rem;
+}
 
 .header__logo {
-  height: 3.5rem; }
+  height: 3.5rem;
+}
 
 .header__text-box {
   position: absolute;
@@ -57,14 +70,16 @@ body {
   left: 50%;
   /* This ensures the reference for 50% starts from THIS element and not from the parent.*/
   transform: translate(-50%, -50%);
-  text-align: center; }
+  text-align: center;
+}
 
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
   /*Fixes shaking in animation*/
   backface-visibility: hidden;
-  margin-bottom: 6rem; }
+  margin-bottom: 6rem;
+}
 
 .heading-primary--main {
   /*Block element takes up whole width and adds line breaks before and after*/
@@ -72,45 +87,61 @@ body {
   font-size: 6rem;
   font-weight: 400;
   letter-spacing: 3.5rem;
+
   /*Ties an animation to an element*/
   animation-name: moveInLeft;
   animation-duration: 1s;
   animation-timing-function: ease-out;
   /*animation-iteration-count: 3;*/
-  /*animation-delay: 3s;*/ }
+  /*animation-delay: 3s;*/
+}
 
 .heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1.74rem;
+
   /*Combines animation name, duration and function*/
-  animation: moveInRight 1s ease-out; }
+  animation: moveInRight 1s ease-out;
+}
 
 /* For animation only use opacity and transform */
 @keyframes moveInLeft {
   /*Animation start*/
   0% {
     opacity: 0;
-    transform: translateX(-10rem); }
+    transform: translateX(-10rem);
+  }
+
   80% {
-    transform: translateX(1rem); }
+    transform: translateX(1rem);
+  }
+
   /*Animation end*/
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 @keyframes moveInRight {
   /*Animation start*/
   0% {
     opacity: 0;
-    transform: translateX(10rem); }
+    transform: translateX(10rem);
+  }
+
   80% {
-    transform: translateX(-1rem); }
+    transform: translateX(-1rem);
+  }
+
   /*Animation end*/
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 /*The :link is a psuedo class. They are used to style element based on a state (blur, hover, click etc.,)*/
 .btn:link, .btn:visited {
@@ -123,20 +154,24 @@ body {
   /*For simple animations, just use transition instead of @keyframes and animation*/
   transition: all .2s;
   position: relative;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+}
 
 .btn:hover {
   transform: translateY(-3px);
   /*Adding shadow only for y-axis and 20px shadow*/
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
+}
 
 .btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+}
 
 .btn--white {
-  background-color: #fff;
-  color: #777; }
+  background-color: $color-white;
+  color: $color-grey-dark;
+}
 
 /* Adds another button BEHIND the original button. The .btn:hover::after makes this hidden element visible*/
 /* This is used extensively to animate an element*/
@@ -150,25 +185,33 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
-  transition: all .4s; }
+  transition: all .4s;
+}
 
 .btn--white::after {
-  background-color: #fff; }
+  background-color: $color-white;
+}
 
 .btn:hover::after {
   transform: scaleX(1.5) scaleY(1.6);
-  opacity: 0; }
+  opacity: 0;
+}
 
 .btn--animated {
   animation: moveInButton 0.5s ease-out .75s;
-  animation-fill-mode: backwards; }
+  animation-fill-mode: backwards;
+}
 
 @keyframes moveInButton {
   /*Animation start*/
   0% {
     opacity: 0;
-    transform: translateY(3rem); }
+    transform: translateY(3rem);
+  }
+
   /*Animation end*/
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
