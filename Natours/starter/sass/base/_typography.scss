@@ -1,3 +1,16 @@
+/* Global styles goes in body*/
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /*font-size: 16px;*/
+  line-height: 1.7;
+  color: $color-grey-dark;
+  /*padding: 30px;*/
+  /* Since 1 rem is 10px, 30px is 30/10 = 3 rem*/
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
 .heading-primary {
   color: $color-white;
   text-transform: uppercase;
