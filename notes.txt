@@ -159,3 +159,31 @@ Sass:
         Functions - Similar to mixins, but they produce value that can be used.
         Extends -  make diff selectors inherit declarations that are common for all of them
         Control directives - Complex code using conditionals and loops. Mainly used for creating CSS frameworks.
+
+Principles of responsive design:
+    Technique to automatically adjust layout of the page for all screen sizes (Desktop, tablet, mobile etc.,)
+    There are 4 principles:
+        Fluid layouts
+            Allow webpage to adapt to current viewport width and height
+            Use % or vh/vw instead of px
+            Use max-width instead of width
+            Types:
+                Float
+                    Old way of building layouts of all sizes using float CSS property
+                    Still used by outdated. Use Flexbox or CSS grid instead
+                    But still need to learn it since you need to manage old codebase
+                Flexbox
+                    Modern way of laying out elements in one dimension without floats
+                    Perfect for component layouts
+                CSS Grid
+                    For laying out element in full-fledged  two dimensional grid
+                    Perfect for page layouts and complex components
+        Responsive units
+            Use rem unit instead of px for most lengths
+            Make it easy to scale the entire layout automatically.
+        Flexible images
+            By default images don't scale automatically as we change view port
+            Always use % for image dimensions, together with the max-width property
+        Media queries
+            Change CSS styles on certain viewport widths (called breakpoints)
+            Media queries alone is not very helpful. Need to design webpage with all the above 3 principles for the page to be responsive.

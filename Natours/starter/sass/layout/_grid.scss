@@ -1,0 +1,51 @@
+
+.row {
+  max-width: $grid-width;
+  background-color: #eee;
+  // Center block element inside another block element (Margin top/bottom is 0, left/right is auto)
+  margin: 0 auto;
+
+  // Adding bottom margin if NOT last row
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical;
+  }
+
+  // Child element of a float element are floated and they dont have any height. This clearfix, addresses this.
+  @include clearfix;
+
+  // Attribute selector - Matches ALL elements whose class name start with `col` and applies this style.
+  [class^="col"] {
+    background-color: orangered;
+    // Wrap elements to left
+    float: left;
+
+    &:not(:last-child) {
+      margin-right: $gutter-horizontal;
+    }
+  }
+
+  .col-1-of-2 {
+    // For a row that has 2 element, width of each element is 100% of width minus the gutter space divided bny two
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+  }
+
+  .col-1-of-3 {
+    width: calc((100% - 2* #{$gutter-horizontal}) / 3);
+  }
+
+  .col-2-of-3 {
+    width: calc(2 * ((100% - 2* #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
+  }
+
+  .col-1-of-4 {
+    width: calc((100% - 3* #{$gutter-horizontal}) / 4);
+  }
+
+  .col-2-of-4 {
+    width: calc(2 * (calc((100% - 3* #{$gutter-horizontal}) / 4)) + #{$gutter-horizontal});
+  }
+
+  .col-3-of-4 {
+    width: calc(3 * (calc((100% - 3* #{$gutter-horizontal}) / 4)) + 2 * #{$gutter-horizontal});
+  }
+}
