@@ -1,0 +1,30 @@
+/* Clear browser presets */
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  /* Forces inheritance */
+  box-sizing: inherit;
+}
+
+/*
+    Specifying font size globally, and using rem for sizing elements ensure the size can be adjusted by just
+    changing the font size. This is because the rem is calculated based on parent font size.
+*/
+html {
+  /* For all child elements, 1 rem is 10px because rem equates to ROOT font size. */
+  /*Also bad practice to set font size in px. It prevents users from changing font size at browser level. */
+  font-size: 62.5%; /*Browser default is 16px and we want 10px. Hence 10/16 *100 = 62.5*/
+}
+
+/* Global styles goes in body*/
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /*font-size: 16px;*/
+  line-height: 1.7;
+  color: $color-grey-dark;
+  /*padding: 30px;*/
+  /* Since 1 rem is 10px, 30px is 30/10 = 3 rem*/
+  padding: 3rem;
+  box-sizing: border-box;
+}

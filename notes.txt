@@ -139,7 +139,7 @@ CSS naming convention:
 
 CSS folder structure:
     Use 7-1 pattern
-        7 different folders for partial sass files
+        7 different folders for partial sass files. Partial files' name start with underscore.
         1 main saas file to import all other files into a compiled CSS stylesheet
         The 7 folders are base, components, layout, pages, themes, abstracts, vendors
 

@@ -1,0 +1,60 @@
+.btn {
+  /*The :link is a psuedo class. They are used to style element based on a state (blur, hover, click etc.,)*/
+  &:link, &:visited {
+    /*inline-block is treated as as text element*/
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    /*For simple animations, just use transition instead of @keyframes and animation*/
+    transition: all .2s;
+    position: relative;
+    font-size: 1.6rem;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    /*Adding shadow only for y-axis and 20px shadow*/
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+    &::after {
+      transform: scaleX(1.5) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  /* Adds another button BEHIND the original button. The btn:hover::after makes this hidden element visible*/
+  /* This is used extensively to animate an element*/
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+
+  &--animated {
+    animation: moveInButton 0.5s ease-out .75s;
+    animation-fill-mode: backwards;
+  }
+}
