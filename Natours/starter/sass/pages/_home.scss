@@ -1,0 +1,7 @@
+.section-about {
+  background-color: $color-grey-light-1;
+  padding: 25rem 0;
+  // Moves the entire section 20vh to the top.
+  // The view port height of page is 95vh, and the header image is clipped to 75vh. Hence 95-75 = 20.
+  margin-top: -20vh;
+}

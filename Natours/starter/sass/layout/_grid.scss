@@ -1,7 +1,6 @@
 
 .row {
   max-width: $grid-width;
-  background-color: #eee;
   // Center block element inside another block element (Margin top/bottom is 0, left/right is auto)
   margin: 0 auto;
 
@@ -15,7 +14,6 @@
 
   // Attribute selector - Matches ALL elements whose class name start with `col` and applies this style.
   [class^="col"] {
-    background-color: orangered;
     // Wrap elements to left
     float: left;
 
