@@ -38,6 +38,15 @@
     }
   }
 
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
   /* Adds another button BEHIND the original button. The btn:hover::after makes this hidden element visible*/
   /* This is used extensively to animate an element*/
   &::after {
