@@ -14,9 +14,32 @@ html {
   /* For all child elements, 1 rem is 10px because rem equates to ROOT font size. */
   /*Also bad practice to set font size in px. It prevents users from changing font size at browser level. */
   font-size: 62.5%; /*Browser default is 16px and we want 10px. Hence 10/16 *100 = 62.5*/
+
+  // The order in which media query needs to be applied. Always specify large ones first.
+  @include respond(tab-land) { // is width < 1200px
+      // 1rem should be 9px; 9/16 * 100 = 56.25%
+      font-size: 56.25%;
+  }
+
+  @include respond(tab-port) { // is width < 1200
+    // 1rem should be 8px; 8/16 * 100 = 50%
+    font-size: 50%;
+  }
+
+  // This uses min width hence goes last
+  @include respond(big-desktop) {
+    // 1rem = 12px
+    font-size: 75%;
+  }
 }
 
 /* Global styles goes in body*/
 body {
   box-sizing: border-box;
+  /* Since 1 rem is 10px, 30px is 30/10 = 3 rem*/
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }

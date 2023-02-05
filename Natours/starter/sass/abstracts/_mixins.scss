@@ -5,3 +5,38 @@
     clear: both;
   }
 }
+
+// Media query manager
+/*
+0 - 600px - phone
+600 - 900px - Tablet portrait
+900 - 1200px - Tablet landscape
+[1200 to 1800] - normal styles apply
+1800px +  - Big Desktop
+
+$breakpoint args
+  phone
+  tab-port
+  tab-land
+  big-desktop
+
+  The rem and em in media query is not affected by the root font size. Instead it based on the font size of the browser.
+  rem in media queries might not work in all browsers. So use em
+  Default is 16px. So 1em = 16px
+
+  Order: base + typography > general layout + grid > page layout > components
+ */
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) { @content }; // 600px/16 = 37.5
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) { @content };
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) { @content };
+  }
+  @if $breakpoint == big-desktop {
+    @media (min-width: 112.5em) { @content };
+  }
+}

@@ -187,3 +187,23 @@ Principles of responsive design:
         Media queries
             Change CSS styles on certain viewport widths (called breakpoints)
             Media queries alone is not very helpful. Need to design webpage with all the above 3 principles for the page to be responsive.
+
+Responsive:
+    Plan for mobile first or desktop first.
+    Desktop first:
+        Develop CSS for desktop screen (eg., max-width)
+        Then media queries to shrink design to smaller screens
+
+    Mobile first:
+        Develop CSS for smaller screens (eg., min-width)
+        Then media queries to expand design to large screen
+        Focus to reduce websites and apps to absolute essentials
+        100% optimized for mobile exp
+        results in smaller, faster efficient products
+        But.
+            The desktop version will be empty and simplistic
+
+    media queries:
+        Override CSS based on view port width
+        Say we have two media queries defined for max width of 900px and 600px, and the phone width is 500px, both media queries will be executed.
+        They dont have importance or specificity. So always add them at the end.

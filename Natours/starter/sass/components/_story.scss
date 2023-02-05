@@ -9,6 +9,7 @@
   font-size: $default-font-size;
   transform: skewX(-12deg);
 
+  // Select all direct children
   & > * {
     transform: skewX(12deg);
   }
