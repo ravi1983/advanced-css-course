@@ -22,15 +22,21 @@
     width: 15rem;
     height: 15rem;
     float: left;
-    // radius - and position. The element needs to be floated and have defined dimensions.
-    // Makes the text flow around the circle.
-    -webkit-shape-outside: circle(50%);
-    shape-outside: circle(50%);
+    overflow: hidden;
 
     // Draw the actual circle
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
+
+    @supports (clip-path: polygon(0 0) or (-webkit-clip-path: polygon(0 0))) {
+      // radius - and position. The element needs to be floated and have defined dimensions.
+      // Makes the text flow around the circle.
+      -webkit-shape-outside: circle(50%);
+      shape-outside: circle(50%);
+
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      border-radius: none;
+    }
 
     position: relative;
 

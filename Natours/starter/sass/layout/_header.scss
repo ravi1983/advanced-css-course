@@ -1,19 +1,35 @@
 .header {
-  height: 95vh; /*Element is 95% of viewport*/
+  height: 85vh;
   /*linear gradient displays image that shows light green to dark green from right */
   background-image: linear-gradient(
-                  to right bottom,
-                  rgba($color-primary-light, 0.8),
-                  rgba($color-primary-dark, 0.8)),
-  url("../img/hero.jpg");
+  to right bottom,
+  rgba($color-primary-light, 0.8),
+  rgba($color-primary-dark, 0.8)),
+url("../img/hero-small.jpg");
   background-size: cover; /*Tries to fit image to the 95vh*/
   background-position: top; /*Ensure Image top is not croped during resize*/
-  /* Each param to polygon is coordination on x and y axis.*/
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative;
   /* Making a triangle */
   /*clip-path: polygon(0 100%, 50% 0, 100% 100%);*/
+
+  @supports (clip-path: polygon(0 0) or (-webkit-clip-path: polygon(0 0))) {
+    height: 95vh; /*Element is 95% of viewport*/
+    /* Each param to polygon is coordination on x and y axis.*/
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  }
+
+  // Whenever resolution is higher than 192dpi and width is > 600px OR if width > 2000px
+  // 2000/16 = 125 em
+  @media (min-resolution: 192dpi) and (min-width: 37.5em),
+         (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+         (min-width: 125em){
+    background-image: linear-gradient(
+                    to right bottom,
+                    rgba($color-primary-light, 0.8),
+                    rgba($color-primary-dark, 0.8)),
+    url("../img/hero.jpg");
+  }
 
   @include respond(phone) {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
