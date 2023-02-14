@@ -203,7 +203,12 @@ Responsive:
         But.
             The desktop version will be empty and simplistic
 
+
     media queries:
         Override CSS based on view port width
         Say we have two media queries defined for max width of 900px and 600px, and the phone width is 500px, both media queries will be executed.
-        They dont have importance or specificity. So always add them at the end.
+
+    Responsive images:
+        Resolution switching - Decrease image resolution on smaller screens
+        Density switching - Half the image resolution
+        Art direction - Different image on smaller screen
