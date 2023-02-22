@@ -22,8 +22,8 @@ url("../img/hero-small.jpg");
   // Whenever resolution is higher than 192dpi and width is > 600px OR if width > 2000px
   // 2000/16 = 125 em
   @media (min-resolution: 192dpi) and (min-width: 37.5em),
-         (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
-         (min-width: 125em){
+          only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+          only screen and (min-width: 125em){
     background-image: linear-gradient(
                     to right bottom,
                     rgba($color-primary-light, 0.8),
