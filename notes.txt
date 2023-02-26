@@ -174,6 +174,7 @@ Principles of responsive design:
                     But still need to learn it since you need to manage old codebase
                 Flexbox
                     Modern way of laying out elements in one dimension without floats
+                    Less code than floats
                     Perfect for component layouts
                 CSS Grid
                     For laying out element in full-fledged  two dimensional grid
@@ -212,3 +213,26 @@ Responsive:
         Resolution switching - Decrease image resolution on smaller screens
         Density switching - Half the image resolution
         Art direction - Different image on smaller screen
+
+Flexbox:
+    Declare a flex container (display: flex)
+    All items inside container are flex items (X-Axis is Main axis and Cross-Axis is Cross Axis)
+    Flex Container props:
+        flex-direction: row (default), column, row-reverse, column-reverse
+        flex-wrap: nowrap (default), wrap
+        justify-content: flex-start(default), flex-end, center, space-between, space-around, space-evenly
+            How items are spaced in the main axis
+        align-items: stretch(default), flex-start, flex-end, center, baseline
+            How items are spaced in the cross axis
+        align-content: stretch(default), flex-start, flex-end, center, space-between, space-around
+            How rows are aligned on cross axis. Only applicable when there is more than one row.
+    Flex Item props:
+        align-self: auto(default),stretch,flex-start,flex-end,center,baseline
+            Similar to align-items but just for that item
+        order: 0(default)
+            Order in which this item should appear. Useful for reordering item
+        flex-grow/flex-shrink: 0 (default)
+            How item can grow or shrink
+        flex-basis: auto
+            define base width
+        Short hand for flex-grow/shrink/basis is: `flex: 0 1 auto;`
