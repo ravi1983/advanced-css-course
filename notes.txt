@@ -236,3 +236,16 @@ Flexbox:
         flex-basis: auto
             define base width
         Short hand for flex-grow/shrink/basis is: `flex: 0 1 auto;`
+
+CSS Grid:
+    Brings 2D layout
+    Replace float layout and more readable/logical CSS & HTML
+    Works well with Flexbox. Flexbox for 1D layout and CSS grid for 2D layout
+    No need for frameworks like bootstrap because CSS is THE framework
+
+    display: grid
+    Has column axis and row axis. Unlike flexbox these axis cannot be changed.
+    The items are called grid items.
+    Grid line - Divide the columns and rows. They are automatically numbered.
+    Gutter - Space between rows and columns
+    Grid track - If horizontal it's row, and for vertical it's column
