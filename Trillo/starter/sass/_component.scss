@@ -393,16 +393,20 @@
       margin-right: .7rem;
 
       // Older browsers and if we dont need to change fill color
-      //background-image: url(../img/chevron-thin-right.svg);
-      //background-size: cover;
+      background-image: url(../img/chevron-thin-right.svg);
+      background-size: cover;
 
       // Newer browsers
       // Mark allows you to see through the image and see the background color.
-      background-color: var(--color-primary);
-      -webkit-mask-image: url(../img/chevron-thin-right.svg);
-      -webkit-mask-size: cover;
-      mask-image: url(../img/chevron-thin-right.svg);
-      mask-size: cover;
+      @supports (-webkit-mask-image: url(img)) or (mask-image: url(img)) {
+        background-color: var(--color-primary);
+        -webkit-mask-image: url(../img/chevron-thin-right.svg);
+        -webkit-mask-size: cover;
+        mask-image: url(../img/chevron-thin-right.svg);
+        mask-size: cover;
+
+        background-image: none;
+      }
     }
   }
 }
