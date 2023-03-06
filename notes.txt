@@ -249,3 +249,4 @@ CSS Grid:
     Grid line - Divide the columns and rows. They are automatically numbered.
     Gutter - Space between rows and columns
     Grid track - If horizontal it's row, and for vertical it's column
+    Refer `Grid props.pdf`
