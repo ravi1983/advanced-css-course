@@ -80,6 +80,7 @@
   }
 }
 
+CHALLENGE
 
 <div class="container">
   <header class="header">Header</header>
@@ -92,6 +93,106 @@
 </div>
 
 
+// Method #1 line numbers
+// .container {
+//   width: 600px;
+//   margin: 20px auto;
+
+//   display: grid;
+//   grid-template-rows: repeat(8, 5rem);
+//   grid-template-columns: repeat(4, 1fr);
+//   grid-gap: 20px;
+
+//   & > * {
+//     background: orangered;
+//     padding: 10px;
+//     font-size: 20px;
+//     font-family: sans-serif;
+//     color: #fff;
+//     font-weight: 900;
+//   }
+// }
+
+// .header {
+//   grid-column: 1 / -1;
+// }
+
+// .box {
+//   &--1 {
+//     grid-row: 2 / 4;
+//   }
+//   &--2 {
+//     grid-row: 2 / 4;
+//   }
+//   &--3 {
+//     grid-row: 2 / 4;
+//   }
+// }
+
+// .sidebar {
+//   grid-row: 2 / 8;
+// }
+
+// .main {
+//   grid-row: 4 / 8;
+//   grid-column: 1 / 4;
+// }
+
+// .footer {
+//   grid-column: 1 / -1;
+// }
+
+// Method #2 line names
+// .container {
+//   width: 600px;
+//   margin: 20px auto;
+
+//   display: grid;
+//   grid-template-rows: [header-start] 5rem [header-end box-start] 5rem[box-end main-start] repeat(5, 5rem) [main-end footer-start] 5rem [footer-end];
+//   // Column names will be col-start 1, col-start 2 and so on
+//   grid-template-columns: repeat(4, [col-start] 1fr [col-end])[grid-end];
+//   grid-gap: 20px;
+
+//   & > * {
+//     background: orangered;
+//     padding: 10px;
+//     font-size: 20px;
+//     font-family: sans-serif;
+//     color: #fff;
+//     font-weight: 900;
+//   }
+// }
+
+// .header {
+//   grid-column: col-start 1 / grid-end;
+// }
+
+// .box {
+//   &--1 {
+//     grid-row: 2 / 4;
+//   }
+//   &--2 {
+//     grid-row: 2 / 4;
+//   }
+//   &--3 {
+//     grid-row: 2 / 4;
+//   }
+// }
+
+// .sidebar {
+//   grid-row: box-start / main-end;
+// }
+
+// .main {
+//   grid-row: 4 / 8;
+//   grid-column: col-start 1 / col-end 3;
+// }
+
+// .footer {
+//   grid-column: col-start 1 / grid-end;
+// }
+
+// Method 3 Name grid areas
 .container {
   width: 600px;
   margin: 20px auto;
@@ -100,6 +201,16 @@
   grid-template-rows: repeat(8, 5rem);
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+
+  // The grid area needs to be 32 cells (8 * 4)
+  grid-template-areas: ". head head ."
+                       "box box box side"
+                       "box box box side"
+                       "main main main side"
+                       "main main main side"
+                       "main main main side"
+                       "main main main side"
+                       "foot foot foot foot";
 
   & > * {
     background: orangered;
@@ -112,31 +223,168 @@
 }
 
 .header {
-  grid-column: 1 / -1;
+  grid-area: head;
 }
 
 .box {
-  &--1 {
-    grid-row: 2 / 4;
-  }
-  &--2 {
-    grid-row: 2 / 4;
-  }
-  &--3 {
-    grid-row: 2 / 4;
-  }
+  grid-area: box;
 }
 
 .sidebar {
-  grid-row: 2 / 8;
+  grid-area: side;
 }
 
 .main {
-  grid-row: 4 / 8;
-  grid-column: 1 / 4;
+  grid-area: main;
 }
 
 .footer {
-  grid-row: 8 / 9;
-  grid-column: 1 / -1;
+  grid-area:foot;
+}
+
+IMPLICIT VS EXPLICIT, and align items
+
+<div class="container">
+  <div class="item item--1">Modern</div>
+  <div class="item item--2">CSS</div>
+  <div class="item item--3">with</div>
+  <div class="item item--4">Flexbox</div>
+  <div class="item item--5">and</div>
+  <div class="item item--6">Grid</div>
+  <div class="item item--7">is</div>
+  <div class="item item--8">great</div>
+</div>
+
+.container {
+  width: 1000px;
+  margin: 30px auto;
+  background-color: #ddd;
+
+  display: grid;
+  //grid-template-rows: repeat(2, 150px);
+  //grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+
+  // Align grid items to grid areas
+  grid-auto-rows: 80px;
+  grid-auto-flow: row dense;
+
+  // Works similar to Flexbox align items. Works on cells.
+  //align-items: center; // Default is stretch // Vertically align
+  // Aligns item horizontally
+  //justify-items: center; // horizontally align
+
+  // Align grid tracks to grid container
+  grid-template-rows: repeat(2, 100px);
+  grid-template-columns: repeat(2, 200px);
+  height: 1000px;
+
+  // Similar to Flexbox justify-content. Works on grid.
+  justify-content: center; // align horizontally
+  align-content: center; // align vertically
+}
+
+.item {
+  background: orangered;
+  padding: 10px;
+  font-size: 30px;
+  font-family: sans-serif;
+  color: #fff;
+
+  &--4 {
+    background-color: crimson;
+    grid-row: 2 / span 3;
+
+    // Similar to flexbox align-self
+    //align-self: start;
+    //justify-self: start;
+  }
+
+  &--6 {
+    background-color: lightcoral;
+    grid-row: 2 / span 2;
+  }
+
+  &--7 {
+    background-color: palevioletred;
+    grid-column: 1 / -1;
+  }
+}
+
+// Minmax() function, min-content, max-content
+
+<div class="container">
+  <div class="item item--1">Modern</div>
+  <div class="item item--2">CSS</div>
+  <div class="item item--3">with</div>
+  <div class="item item--4">Flexbox</div>
+  <div class="item item--5">and</div>
+  <div class="item item--6">Grid</div>
+  <div class="item item--7">is</div>
+  <div class="item item--8">great</div>
+</div>
+
+
+.container {
+  width: 1000px;
+  margin: 30px auto;
+  background-color: #ddd;
+
+  display: grid;
+  //grid-template-rows: repeat(2, 150px);
+
+  // max-content - Width of cell same as the largest cell in that col. NO line breaks.
+  // min-content - Same as max-width but adds line breaks.
+  //grid-template-columns: max-content 1fr 1fr min-content;
+  // grid-template-rows: repeat(2, min-content);
+
+  // minmax - cell is always within these values.
+  // width: 90%;
+  //grid-template-rows: repeat(2, minmax(150px, min-content)); // min 150px, max - min-content (max width of larges word in that col with line breaks)
+  //grid-template-columns: minmax(200px, 1fr) repeat(3, 1fr);
+
+  // Using auto-fill and auto-fit
+  grid-template-rows: repeat(2, minmax(150px, min-content));
+  // auto-fill auto created tracks.
+  grid-template-columns: repeat(auto-fill, 100px); // creats 10 tracks (1000px/100px)
+  // Same as auto-fill but collapses empty columns
+  // grid-template-columns: repeat(auto-fit, 100px);
+  width: 90%;
+  // Combining auto-fit with minmax makes
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 150px;
+
+
+  .item {
+    background: orangered;
+    padding: 10px;
+    font-size: 30px;
+    font-family: sans-serif;
+    color: #fff;
+
+    &--1 {
+      background-color: orangered;
+    }
+    &--2 {
+      background-color: yellowgreen;
+    }
+    &--3 {
+      background-color: blueviolet;
+    }
+    &--4 {
+      background-color: palevioletred;
+    }
+    &--5 {
+      background-color: royalblue;
+    }
+    &--6 {
+      background-color: goldenrod;
+    }
+    &--7 {
+      background-color: crimson;
+    }
+    &--8 {
+      background-color: darksl;
+    }
+  }
 }
